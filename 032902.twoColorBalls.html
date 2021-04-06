@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/vue.js"></script>
+    <title>双色球号码组随机生成器</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <h2>红球</h2>
+            <span v-for="(i, index) in red" :key="index"> {{i}} </span>
+        </div>
+
+        <div>
+            <h2>蓝球</h2>
+            <span>{{blue}}</span>
+        </div>
+
+        <button @click="change">开奖</button>
+    </div>
+
+
+    <script>
+        let vue = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    red: [],
+                    blue: '',
+                }
+            },
+            methods: {
+                change() {
+                    for (var i = 0; i < 7; i++) {
+                        if (i < 6) {
+                            this.red[i] = Math.ceil(Math.random() * 100)
+                        } else {
+                            this.blue = Math.ceil(Math.random() * 100)
+                        }
+                    }
+
+                    console.log(this.red)
+                    console.log(this.blue)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
